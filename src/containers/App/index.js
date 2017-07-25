@@ -2,23 +2,18 @@ import React, { PureComponent } from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { Route, Switch } from 'react-router';
-import { NavLink } from 'react-router-dom';
 import store, { history } from '../../store';
+import Nav from '../Nav';
+import Footer from '../Footer';
 import page from '../../hoc/page';
-import logo from './logo.svg';
 import './style.css';
 
-const Home = page(() => import('../Home'), {
-    name: 'home',
-    url: '/home',
-    title: '主页'
-  }),
-  Desc = page(() => import('../Desc'), {
-    name: 'desc',
-    title: '描述'
-  }),
+const Home = page(() => import('../Home')),
+  About = page(() => import('../About')),
+  Product = page(() => import('../Product')),
+  Success = page(() => import('../Success')),
+  Contact = page(() => import('../Contact')),
   NoMatch = page(() => import('../NoMatch'), {
-    name: '404',
     title: '404'
   });
 
@@ -28,21 +23,16 @@ export default class App extends PureComponent {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <div className="app">
-            <div className="app__header">
-              <img src={logo} className="app__logo" alt="logo" />
-              <h2>Welcome to React</h2>
-              <NavLink activeClassName="active" exact to="/">
-                主页
-              </NavLink>
-              <NavLink activeClassName="active" to="/desc">
-                描述
-              </NavLink>
-            </div>
+            <Nav />
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/desc" component={Desc} />
+              <Route path="/about" component={About} />
+              <Route path="/product" component={Product} />
+              <Route path="/success" component={Success} />
+              <Route path="/contact" component={Contact} />
               <Route component={NoMatch} />
             </Switch>
+            <Footer />
           </div>
         </ConnectedRouter>
       </Provider>

@@ -1,0 +1,16 @@
+@import "../../common.scss";
+$base: 'c-footer';
+
+.#{$base} {
+  text-align: center;
+  background: #000;
+  color: #fff;
+  padding: 20px 20%;
+  font-size: 26px; /*px*/
+  @include max-width {
+    span {
+      display: block;
+    }
+    padding: 20px 0;
+  }
+}

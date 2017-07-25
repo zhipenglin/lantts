@@ -1,0 +1,15 @@
+$main-color: #1b813e;
+
+@mixin max-width($width:800px) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

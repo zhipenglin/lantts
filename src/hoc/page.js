@@ -1,19 +1,21 @@
 import React, { PureComponent } from 'react';
 import Loadable from 'react-loadable';
 import { connect } from 'react-redux';
-import classnames from 'classnames';
 import action from '../actions/pageAction';
+import { toggleNav } from '../actions/navAction';
 import fetch from '../util/fetch';
 import setTittle from '../util/setTittle';
+
+const originTitle = document.title;
 
 export default function(Component, options) {
   options = Object.assign(
     {
       loading: () => null,
       url: '',
-      name: '',
       data: {},
-      title: ''
+      nav: true,
+      title: originTitle
     },
     options
   );
@@ -24,26 +26,33 @@ export default function(Component, options) {
   });
 
   return connect((state = {}) => {
-    const { page } = state;
-    return { page };
+    const { page, nav } = state;
+    return { page, nav };
   })(
     class Page extends PureComponent {
       componentWillMount() {
-        const { dispatch, location } = this.props;
-        options.title && setTittle(options.title);
-        let search = fetch.stringify(
-          Object.assign({}, fetch.parse(location.search), options.data)
-        );
-        options.url &&
+        const { dispatch, location, nav } = this.props;
+        setTittle(options.title);
+
+        if (options.url) {
+          let search = fetch.stringify(
+            Object.assign({}, fetch.parse(location.search), options.data)
+          );
           dispatch(
             action.fetchData(`${options.url}${search ? '?' + search : ''}`)
           );
+        }
+
+        if (options.nav !== nav.show) {
+          dispatch(toggleNav());
+        }
       }
 
       render() {
+        const { page } = this.props;
         return (
-          <div className={classnames('app__page', options.name)}>
-            <LoadableComponent {...this.props} />
+          <div className="app__page">
+            <LoadableComponent {...this.props} page={page} />
           </div>
         );
       }

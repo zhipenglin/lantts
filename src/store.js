@@ -25,4 +25,8 @@ function configureStore(preloadedState) {
   );
 }
 
-export default configureStore();
+export default configureStore({
+  nav: {
+    show: true
+  }
+});

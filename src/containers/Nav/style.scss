@@ -1,0 +1,67 @@
+@import "../../common.scss";
+
+$base: 'c-nav';
+
+.#{$base} {
+  &--hide {
+    display: none;
+  }
+  height: 116px;
+  &__inner {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    font-size: 32px; /*px*/
+    background: $main-color;
+    height: 116px;
+    line-height: 116px;
+    overflow: hidden;
+    @include clearfix;
+  }
+  &__left {
+    float: left;
+    color: #fff;
+    padding-left: 100px;
+    @include max-width {
+      padding-left: 40px;
+    }
+  }
+  &__text {
+    font-size: 34px;
+    @include max-width {
+      display: none;
+    }
+  }
+  &__logo {
+    @include max-width {
+      display: none;
+    }
+    vertical-align: middle;
+    transform: translateY(-7px);
+    margin-right: 10px;
+  }
+  &__list {
+    float: right;
+    padding-right: 100px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    @include max-width {
+      float: none;
+      padding-right: 0;
+      font-size: 26px;
+    }
+  }
+  &__link {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 26px;
+    display: inline-block;
+    @include max-width {
+      margin: 0 20px;
+    }
+    &.active {
+      transform: scale(1.1);
+    }
+  }
+}
