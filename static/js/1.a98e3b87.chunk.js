@@ -1,0 +1,2 @@
+webpackJsonp([1],{284:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var u=t(5),r=t.n(u);n.default=function(){return r.a.createElement("div",null,"\u6210\u529f\u6848\u4f8b")}}});
+//# sourceMappingURL=1.a98e3b87.chunk.js.map
