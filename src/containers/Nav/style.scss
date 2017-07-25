@@ -21,7 +21,7 @@ $base: 'c-nav';
   &__left {
     float: left;
     color: #fff;
-    padding-left: 100px;
+    padding-left: 8vw;
     @include max-width {
       padding-left: 40px;
     }
@@ -42,7 +42,7 @@ $base: 'c-nav';
   }
   &__list {
     float: right;
-    padding-right: 100px;
+    padding-right: 5vw;
     text-align: center;
     overflow: hidden;
     white-space: nowrap;

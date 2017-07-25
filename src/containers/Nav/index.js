@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { NavLink } from 'react-router-dom';
+import NavLink from 'react-router-dom/NavLink';
 import { withRouter } from 'react-router';
 import { compose } from 'recompose';
 import className from 'classnames';
